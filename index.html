@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>RBP-SITE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerin">
+<head>
+ <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../dist/css/lightbox.min.css">	
+<style>
+
+.w3-myfont {
+  font-family: Times new Roman, Georgia, sans-serif;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+ .w3-header{
+  background-color:#c5cae9;
+  background-image:url(img/header_video_edited.gif);
+  background-repeat: no-repeat;
+  background-position: top;  
+}
+
+body,h1,h2,h3,h4,h5 {font-family: "Times New Roman", Times, serif;}
+body {font-size: 8px; }
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+#chartcontainer{
+  color: #ffdab9;
+}
+
+.leftpane{
+	 width: 50%;
+     height: available;
+    min-height: 400px;
+    float: left;
+    background-color: pale-blue;
+    border-collapse: collapse;
+}
+
+.rightpane{
+	width: 50%;
+	text-align:center;
+	text-color:blue;
+    height: available;
+    min-height: 400px;
+    float: left;
+    background-color: Sand;
+    border-collapse: collapse;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color:  #ff99cc;
+  padding: 1px;
+}
+
+.grid-container_2 {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color:  #ff99cc;
+  padding: 1px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 20px;
+  text-align: justify;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.w3-modal-content{
+  position:relative;
+  font-size: 20px;
+  font-weight:bold;
+  text-align:justify;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 6px 16px;
+  color: white;
+}
+
+#caption{
+  font-size:20px;
+  font-weight:bold;
+  text-align:justify;
+}
+
+.demo {
+  opacity: 0.8;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.thumbnail{
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100px;
+}
+
+.thumbnail:hover{
+	box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+</style>
+</head>
+<body class="w3-container w3-light-grey" style="width: 90%; margin: 0 auto;">
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-large w3-collapse" style=" width: 200px;font-weight: bold; font-style: normal; background-color: #82b1ff;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size: 16px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-16"><b></b></h3>
+  </div>
+  <div class="w3-bar-block w3-animate-right" style="text-align: bottom;">
+  	<!--<img class= "  left w3-round" src="img/csir_logo_1_214x236.png" alt="CSIR"  style= "float: left; width:60%; height:50%"><br><br>-->
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-round-large w3-hover-white">Home</a><br> 
+    <a href="http://scbb.ihbt.res.in/" onclick="w3_close()" class="w3-bar-item w3-button w3-round w3-hover-white">About</a><br> 
+    <a href="#Study-protocol" onclick="w3_close()" class="w3-bar-item w3-button w3-round w3-hover-white" i>Designed Study Protocol</a><br>
+   <div class="w3-dropdown-hover">
+    <button class="w3-bar-item w3-button w3-round w3-hover-white">Important Finding<i class="fa fa-caret-down"></i></button><br>
+    <div class="w3-dropdown-content w3-bar-block w3-animate-right"><br>
+      <a href="zoombar1.html" onclick="w3_close()" class="w3-bar-item w3-button w3-round">Binding sites of RBPs on each miRNAs</a><br>
+      <a href="zoombar1_normalized.html" onclick="w3_close()" class="w3-bar-item w3-button w3-round">&nbsp;Normalized view</a></div> 
+      <a href="#FAQ" onclick="w3_close()" class="w3-bar-item w3-button w3-round w3-hover-white">FAQ</a><br>
+     <a href="team.html" onclick="w3_close()" class="w3-bar-item w3-button w3-round w3-hover-white">Group Members</a><br>  
+    <a href="contact.html" onclick="w3_close()" class="w3-bar-item w3-button w3-round w3-hover-white">Contact</a><br>
+
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<!-- Overlay effect when opening sidebar on small screens -->
+
+
+<!-- !PAGE CONTENT! -->
+<div class= "w3-header w3-container " style="margin-left:  200px;margin-right: 10px; padding: 10px;">
+<!--<video span class="video-fluid z-depth-1" autoplay loop controls muted style="width:1100px; height:240px;">
+  <source src="img/webpage_header_video.mp4" type="video/mp4">
+  <source src="img/webpage_header_video.ogg" type="video/ogg">
+</video>-->
+  
+<img class= "left w3-round" src="img/csir_logo_1_214x236.png" alt="CSIR"  style= "float: left; width:10%; height:10%"><img class= "right w3-round" src="img/ihbt_logo.png"  alt="IHBT" style= "float:right; width:10%; height: 10%">
+  <!-- Header -->
+<h1 class= "w3-container w3-myfont w3-xxlarge w3-text-deep-purple" style=" display:block; font-size: 15px;"><strong>SAGA OF RBP-miRNA INTERPLAY</strong></h1>
+</div>
+<div class="w3-container" style="margin-top:75px; padding-left: 220px; word-spacing: 2px;">
+	<div class="leftpane"><h1 class="w3-xlarge w3-text-blue w3-italic"><em>Learn more about miRNA Biogenesis from short video</em></h2><video span class="responsive-video" autoplay loop controls muted style="width: 700px; height: 270px; border-style:dashed; padding: 30px; font-size: 30px;"><source src="img/video/miRNA_biogenesis_final1.mp4" type="video/mp4"/></video></div>
+
+<!--<h1 class="w3-xxlarge w3-text-blue w3-italic"><em>Learn more about miRNA Biogenesis from short video</em></h2><br><br>
+ 	<video span class="video-fluid z-depth-1" autoplay loop controls muted style="width: 1500px; height: 500px; border-style:dashed; padding: 30px;">
+  <source src="img/video/miRNA_biogenesis_final1.mp4" type="video/mp4"/>
+</video>-->
+<div class="rightpane"><h2 class="w3-xlarge w3-text-blue w3-italic">Data Statistics</h2><a class="example-image-link" href="img/Data_statistics.gif" data-lightbox="example-set"   style="width:100%"><img class="example-image" src="img/Data_statistics.gif"  alt="NGS" width="700" height="270" style="border-style:dashed; padding: 30px; font-size: 30px;"></a></div>
+
+<!--<table>-->
+   
+   <!-- Services -->
+  <!--<div class="w3-container" id="services" style="margin-top:75px; padding-left: 1px">
+  <h1 class="w3-xlarge w3-text-blue w3-italic"><em>Three Major Layer of Gene Regulation</em></h1>
+   <img src="img/Fig1.png" class="w3-border w3-margin " alt="Graphical abstract" style="padding: auto;width: 80%; height: 500px">
+    <p></p>
+    <p>
+    </p>
+  </div>-->
+
+<!-- story of miRNA Biogenesis -->
+<section>
+<div>
+<div class="w3-container">
+<h1 class="w3-xxlarge w3-text-blue w3-italic"><em>Introduction</em></h2>
+<p style="display:block; font-size: 20px;">In this section we described about the <em>function of RBPs at different levels of gene regulation, miRNA Biogenesis Pathways, Shortcoming and motivation behind this study and statistics of Clipseq Data available.</em></p>
+<div class="grid-container" style="margin:8px">
+  <div class="grid-item">
+    <img src="img/img_btn/three_layer_gene_Regulation.png" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+  </div>
+  <div class="grid-item">
+    <img src="img/img_btn/RBP_new.png" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+  </div>
+  <div class="grid-item">
+    <img src="img/img_btn/miRNA_biogenesis_new.png" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+  </div>
+  <div class="grid-item">
+    <img src="img/img_btn/problem.png" style="display: block; margin-left: auto; margin-right: auto; width: 80%;"  onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+  </div>
+ <div class="grid-item">
+    <img src="img/img_btn/motivation_shortcome_jha_et_al.png" style="width:100%" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+  </div>
+  <div class="grid-item">
+    <img src="img/img_btn/Clipseq_data_trend.png" style="width:100%" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+  </div>
+  </div>
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 6</div>
+      <img src="img/img_btn/image_file_924X474/Fig-1.png" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 6</div>
+      <img src="img/img_btn/image_file_924X474/Fig-2.png" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 6</div>
+      <img src="img/img_btn/image_file_924X474/Fig-3.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides">
+      <div class="numbertext">4 / 6</div>
+      <img src="img/img_btn/rsz_problem_s.png" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">5 / 6</div>
+      <img src="img/img_btn/image_file_924X474/Fig-4.png" style="width:100%">
+    </div>
+      <div class="mySlides">
+      <div class="numbertext">6 / 6</div>
+      <img src="img/img_btn/image_file_924X474/Fig-5.png" style="width:100%">
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+<div class="row">
+<div class="column">
+      <img class="demo cursor" src="#"  onclick="currentSlide(1)" alt="Fig.1 describe the major(three) layer of gene regulations. (1) Transcription control by epigenetic factors(A-C). (2)Transcription control by Transcription factor (D-E).(3) Post transcriptional control by sRNAs.">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="#"  onclick="currentSlide(2)" alt="Fig.2 showed the involvement of RBPs in transcription (Initiation to termination) , Post-transcriptional modification, translation (Initiation to termination) and mRNA decay process.">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="#"  onclick="currentSlide(3)" alt="Fig.3 represent the biogenesis in different class of sRNAs, which include
+miRNA(both canonical and non-canonical pathway); small nuclear RNA (snRNA) ; piwi-interacting RNA (piRNA); tRNA derived sRNAs; small nucleolar RNA(snoRNA)." font-size: 20px">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="#"  onclick="currentSlide(4)" alt="Fig.4- The problem statement">
+    </div>
+   <div class="column">
+      <img class="demo cursor" src="#"  onclick="currentSlide(5)" alt=" Fig.5 Critical region’s possible in micro-RNA formation. (A) The transcription factors bind the critical region in the genomic sequence, in spatio temporal manner, to promote miRNA transcription. (B) Precursor miRNA sequence contains the critical region for binding of various RBPs. (C)RBPs bind the critical preferred region and establish interaction with RNA and RNAse III enzymes like Drosha-DGCR8 complex or Dicer. This could be also be a combinatorial process involving various RBPs in synergistic manner to influence binding of other binding factors including RBPs. (D) The processed ds miRNA duplex.">
+    </div>
+   <div class="column">
+      <img class="demo cursor" src="#" onclick="currentSlide(6)" alt="Fig.6- Trends of CLIP-seq data increment within eleven years in Gene Expression Omnibus (GEO) database highlighting upward trend of data generation since 2008.">
+    </div>
+   </div>
+</div>
+<script>
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+</div>
+</section>
+<section>
+<div class="w3-container">
+<h1 class="w3-xxlarge w3-text-blue w3-italic"><em>Study Protocol</em></h2>
+<p style="display:block; font-size: 20px;">This section illustrate about different perspects of protocol and analysis which we performed to annotate about gene-regulation obtained from RBP-miRNA molecular data: Like detail <em>protocol follow for NGS analysis, protocol about co-expression network construction for finding putative partners of RBPs, Modelling of Expression data and binding information in reconstruction of miRNA biogenesis model based on Bayesian network analysis</em>,etc. </p>
+<div class="grid-container_2" style="margin:8px">
+  <div class="grid-item">
+  	<a class="example-image-link" href="img/img_btn/Fig-6.png" data-lightbox="example-set" data-title="Detail protocol follow for NGS Data (RNA-seq, sRNA-seq and CLIP-seq) Analysis"  style="width:100%"><img class="example-image" src="img/img_btn/Fig-6.png"  alt="NGS" width="600" height="236">Fig.7: The above diagram illustrate the detail protocol followed for NGS Data (RNA-seq, sRNA-seq and CLIP-seq) Analysis.</a></div>
+      <div class="grid-item">
+      <a class="example-image-link" href="img/img_btn/image_file_924X474/Fig-7.png" data-lightbox="example-set" data-title="protocol for co-expression network construction to find the possible partners of RBP"  style="width:100%"><img class="example-image" src="img/img_btn/image_file_924X474/Fig-7.png"  alt="jimmy" width="600" height="236">Fig.8: This diagram described the detail protocol followed in co-expression network construction to find the possible partners of RBP.</a></div>
+       <div class="grid-item">
+      <a class="example-image-link" href="img/img_btn/image_file_924X474/Fig-8.png" data-lightbox="example-set" data-title=" Fig.9 represent biological modeling of expression data and binding information in Construction of miRNA biogenesis model based on Bayesian network analysis" style="width:100%"><img class="example-image" src="img/img_btn/image_file_924X474/Fig-8.png"  alt="shilpi" width="600" height="236">Fig.9: The above diagram represent the biological modeling of expression data and binding
+       information in Construction of miRNA biogenesis model based on Bayesian network analysis.</a></div>
+       <div class="grid-item">
+      <a class="example-image-link" href="img/img_btn/image_file_924X474/Fig-9.png" data-lightbox="example-set" data-title="The detailed work flow followed in current study." style="width:100%"><img class="example-image" src="img/img_btn/image_file_924X474/Fig-9.png" alt="ashu" width="600" height="236">Fig.10: The above diagram illustrate the detailed work flow followed in current study.</a></div>
+</section>
+<section>
+<div class="w3-container" id="results" style="margin-top:75px; padding-left: 1px; word-spacing: 10px;">
+<section>
+<h1 class="w3-xxlarge w3-text-blue w3-italic"><em>Result and Discussion</em></h1></div>
+<p style="font-size: 20px; text-align: justify; line-height: 15pt;">By analysing CLIP-seq NGS and Gene Expression data, the possible binding site of 155 RBPs, corresponding clip-seq sequences were mapped on different miRNAs (both Pri-miRNA and pre-miRNA) and biological processess related to 155 RBPs are represented in form of word clouds, as shown in Figure 11<img src="img/img_btn/new_rbp_cloud.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal01').style.display='block'"><div id="modal01" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/new_rbp_cloud.png" style="width:100%">Figure 11. Word cloud of biological processes for 155 RBPs in current study.</a></div></div><a style="font-size: 20px; text-align: justify; line-height: 15pt;">and also we displayed distribution of 155 RBPs over different primary and precursor miRNAs in Figure 12.<a target="_blank" href="img/stacked-bar-chart-with-negative-values/dist/index.html"><img class="thumbnail" src="img/img_btn/image_file_924X474/Fig-11.png" alt="distribution" style="border: 0; display:inline;  box-shadow: none; width:150px"></a><p style="font-size: 20px; text-align: justify; line-height: 15pt;">Further, we discussed about the detail working protocol followed to find association of binding site and expresssion of RBP in figure 13.<img src="img/img_btn/image_file_924X474/Fig-12.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal02').style.display='block'"><div id="modal02" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-12.png" style="width:100%">Figure 13.The above diagram illustrate the detail protocol followed to establish the general association of binding site and expression of RBP.</div></div><a style="font-size: 20px; text-align: justify; line-height:15pt;">In figure 14, fig.15, fig.16 and fig.17, we discuss some case studies about some RBPs like AGO2, HNRNPA2B1, NSUN2 and METTL3 for finding possible partners which influencs their binding to RNA.<img src="img/img_btn/image_file_924X474/Fig-13.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal04').style.display='block'"><div id="modal04" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-13.png" style="width:100%">Figure 14. Co-expression network analysis of AGO2 to find out possible partners of AGO2, which influenced in its binding.</div></div><img src="img/img_btn/image_file_924X474/Fig-14.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal05').style.display='block'"><div id="modal05" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-14.png" style="width:100%">Figure 15. Co-expression network of HNRNPA2B1 to find out possible partners, help in its binding to RNA.</div></div><img src="img/img_btn/image_file_924X474/Fig-15.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal06').style.display='block'"><div id="modal06" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-15.png" style="width:100%">Figure 16. Co-expression network for NSUN2 to find out possible partner influence in its binding to RNA.</div></div><img src="img/img_btn/image_file_924X474/Fig-16.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal07').style.display='block'"><div id="modal07" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-16.png" style="width:100%">Figure 17. Co-expression network for METTL3 to find out possible partner influence in its binding to
+RNA.</div></div><a style="font-size: 20px; text-align: justify; line-height:15pt;">Along with this in fig.18, we also validate and represent miRNA-RBPs unique combinations in eight different tissues by overlapped pie-chart.<img src="img/img_btn/image_file_924X474/Fig-17.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal08').style.display='block'"><div id="modal08" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-17.png" style="width:100%">Figure 18. The above diagram described the procedure followed to validate mature-miRNA and RBPs combinations obtained from our study in eight different normal tissue (Bladder, Brain, Breast, Lungs, Pancreas, Placenta and Testis). This pie chart show the distribution of unique miRNA-RBP pairs overlapping across different Tissues.</div></div><a style="font-size: 20px; text-align: justify; line-height:15pt;">On proceeding further, <em>corellelogram in figure 19 showed similar positive association between RBP and processed miRNA in all different tissues.</em><a target="_blank" href="responsive_image_website_27feb/corellelogram_plot/index.html"><img class="thumbnail" src="img/img_btn/image_file_924X474/Fig-18.png" alt="distribution" style="border: 0; display:inline;  box-shadow: none; width:150px"></a><a style="font-size: 20px; text-align: justify; line-height: 15pt;">In unsupervised manner we try to make different clusters of RBP-miRNA combination which sharing common pathways, biological processes and molecular functions.<img src="img/img_btn/image_file_924X474/Fig-19.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal09').style.display='block'"><div id="modal09" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-19.png" style="width:100%">Figure 20. This diagram represent different clusters of miRNAs along with the members in different cluster. These pie charts showed the common pathways , biological process and molecular functions between miRNA target and associated RBPs in different cluster.</div></div><a style="font-size: 20px; text-align: justify; line-height:15pt;">In Fig. 21, Fig. 22 and Fig. 23 we represent RBPs involvent during different phase of biogenesis process i.e phase I- synthesis of precursor miRNA from primary miRNA and phase II- synthesis of mature miRNA from precusor.<img src="img/img_btn/image_file_924X474/Fig-20.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal10').style.display='block'"><div id="modal10" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-20.png" style="width:100%">Figure 21. The above figure illustrate the association of RBPs with different miRNA in different stage of miRNA biogenesis along with their targeting genes.</div></div><a target="_blank" href="img/pie-chart_I-with-legend/dist/index.html"><img class="thumbnail" src="img/img_btn/image_file_924X474/Fig-21.png" alt="distribution" style="border: 0; display:inline;  box-shadow: none; width:150px" ></a><a target="_blank" href="img/pie-chart_II-with-legend/dist/index.html"><img class="thumbnail" src="img/img_btn/image_file_924X474/Fig-22.png" alt="distribution" style="border: 0; display:inline;  box-shadow: none; width:150px"></a><a style="font-size: 20px; text-align: justify; line-height: 15pt;">From correlation analysis of RBP-miRNA expression data show that AAR2 express more than that of well annotated RBPs like DGCR8 and DROSHA. This thing astonishing us, so to gain more insight from this study, we further proceed for structural analysis of AAR2 for domain organization in figure 23.<img src="img/img_btn/image_file_924X474/Fig-23.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal11').style.display='block'"><div id="modal11" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-23.png" style="width:100%">Figure 24. 3D cartoon image of AAR2 protein (PDB-id-4ilg-B and C chain of 2.1 Angstorm.) along with domain organization. Domain with different color scheme along with number range represent position of domain. Blue and red cage of polypeptide belongs to B-chain and orange cage belongs to C-chain.</div></div><a style="font-size: 20px; text-align: justify; line-height:15pt;">Lastly we go to analysed positive and negative association of RBPs with different miRNAs in biogenesis process in fig.24. <img src="img/img_btn/image_file_924X474/Fig-24.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal12').style.display='block'"><div id="modal12" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-24.png" style="width:100%">Figure 25. Above figure illustrate the cooprative and competative association between RBPs in
+miRNA biogenesis .</div></div><a style="font-size: 20px; text-align: justify; line-height:15pt;">as depicted in case of ACIN1 shown in fig. 26 <img src="img/img_btn/image_file_924X474/Fig-25.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal13').style.display='block'"><div id="modal13" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-25.png" style="width:100%">Figure 26. this figure describe the regulatory chains of ACIN1 for positive and negative association with different miRNA during miRNA biogenesis.</div></div><a style="font-size: 20px; text-align: justify; line-height:15pt;">and also we classified different diseased and normal samples in fig.27 <img src="img/img_btn/image_file_924X474/Fig-26.png" style="width: 8%;cursor:zoom-in" onclick="document.getElementById('modal14').style.display='block'"><div id="modal14" class="w3-modal" onclick="this.style.display='none'"><span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span><div class="w3-modal-content w3-animate-zoom"><a><img src="img/img_btn/image_file_924X474/Fig-26.png" style="width:100%">Figure 27. This graph showed the classification of disease and normal samples classified based on RBP expression using k-means clustering.</div></div>
+    </div>
+  </div>
+</div>
+<!-- First row -->
+<!-- First row -->
+
+<!--Footer-->
+
+<div class="w3-container " style="font-size: 3;  padding-left: 5px; padding-top: 10px; max-width: 100%; text-align: center; background-color: #c5cae9">
+  <h6>Designed and developed by Dr. Ashwani Kumar</h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em style="font-size: 15px;">ashwanibitian@gmail.com</em>
+  <p>Copyright. &copy;2019</p>
+</div>
+<!--<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>-->
+    <script src="../dist/js/lightbox-plus-jquery.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+   
+    </body>
+	</html>
